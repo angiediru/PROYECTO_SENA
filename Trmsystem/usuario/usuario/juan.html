@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Mi primer Login</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+
+
+    <!--JQUERY-->
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    
+    
+   
+    
+    <!-- FRAMEWORK BOOTSTRAP para el estilo de la pagina-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+    <!-- Los iconos tipo Solid de Fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <!-- Nuestro css-->
+    <link rel="stylesheet" type="text/css" href="index.css" th:href="@{index.css}">
+
+
+</head>
+
+
+<script>
+    $(document).on('ready', function() {
+        $('#show-hide-passwd').on('click', function(e) {
+            e.preventDefault();
+
+            var current = $(this).attr('action');
+
+            if (current == 'hide') {
+                $(this).prev().attr('type','text');
+                $(this).removeClass('glyphicon-eye-open').addClass('glyphicon-eye-close').attr('action','show');
+            }
+
+            if (current == 'show') {
+                $(this).prev().attr('type','password');
+                $(this).removeClass('glyphicon-eye-close').addClass('glyphicon-eye-open').attr('action','hide');
+            }
+        })
+    })
+</script>
+<body>
+    <div class="modal-dialog text-center">
+        <div class="col-sm-8 main-section">
+            <div class="modal-content">
+                <div class="col-12 user-img">
+                    <img src="userrr.png" th:src="@{user.png}"/>
+                </div>
+                <form class="col-12" th:action="@{/login}" method="post">
+                    <div class="form-group" id="user-group">
+                        <input type="text" class="form-control" placeholder="Nombre de usuario" name="username"/>
+                    </div>
+                    <div class="form-group" id="contrasena-group">
+                        <input type="password"   class="form-control" placeholder="Contraseña" id="password" name="password"/>
+                        <span id="show-hide-passwd" action="hide"  class="form-group-addon glyphicon glyphicon glyphicon-eye-open"></span>  
+                       
+                    </div>
+                   
+                    <button type="submit"  style="border-radius: 4px;" class="btn btn-primary"><i  style="font-size: 15px; position: relative; left: -29px; right: 42px; top: 10px; " class="fas fa-sign-in-alt"></i><h4 style="font-size: 15px;    position: relative;
+                        bottom: 9px; left: 10px;  ">Ingresar</h4></button>
+                
+                </form>
+
+                <div class="col-14 forgot">
+                    <a href="#" style="font-size: 14px;">Olvidaste tu Contraseña?</a>
+                
+            </div>
+        </div>
+    </div>
+</body>
+
+
+  
+</html>
